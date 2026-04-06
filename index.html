@@ -1,0 +1,473 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AbhiModszYT Mods Hub</title>
+
+<style>
+body{
+    margin:0;
+    background:black;
+    color:#00ffcc;
+    font-family:monospace;
+    overflow-x:hidden;
+}
+
+#loader{
+    position:fixed;
+    width:100%;
+    height:100%;
+    background:black;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    z-index:9999;
+    transition:1s;
+}
+#loader img{
+    width:230px;
+    border-radius:12px;
+    box-shadow:0 0 35px #00eaff;
+}
+
+.bg{
+    position:fixed;
+    width:100%;
+    height:100%;
+    top:0;
+    left:0;
+    background:url('https://raw.githubusercontent.com/AbhiModszYT/AbhiModszYT/main/Gojo.gif') center/cover;
+    filter:brightness(0.35);
+    z-index:-3;
+}
+
+#aura{
+    position:fixed;
+    width:100%;
+    height:100%;
+    z-index:-2;
+    background:
+    radial-gradient(circle at 30% 40%, rgba(0,180,255,.25), transparent 40%),
+    radial-gradient(circle at 70% 60%, rgba(0,220,255,.2), transparent 45%);
+    animation:auraMove 8s infinite alternate ease-in-out;
+}
+
+@keyframes auraMove{
+    0%{transform:scale(1);}
+    100%{transform:scale(1.08) translate(15px,-15px);}
+}
+
+#flash{
+    position:fixed;
+    width:100%;
+    height:100%;
+    background:rgba(0,180,255,.4);
+    opacity:0;
+    pointer-events:none;
+    z-index:50;
+}
+
+.container{
+    max-width:900px;
+    margin:auto;
+    padding:20px;
+    padding-bottom:130px;
+}
+
+h1{
+    text-align:center;
+    text-shadow:0 0 20px #00eaff;
+}
+
+.tabs{
+    display:flex;
+    justify-content:center;
+    gap:10px;
+    margin-bottom:20px;
+}
+
+.tab-btn{
+    padding:10px 20px;
+    background:black;
+    color:#00eaff;
+    border:1px solid #00eaff;
+    cursor:pointer;
+}
+
+.card{
+    background:rgba(0,0,0,.85);
+    border:1px solid #00eaff;
+    border-radius:12px;
+    margin-top:15px;
+    box-shadow:0 0 15px #00eaff;
+}
+
+.card-header{
+    padding:15px;
+    cursor:pointer;
+    font-weight:bold;
+}
+
+.card-body{
+    display:none;
+    padding:15px;
+}
+
+.card-body img{
+    width:100%;
+    max-width:220px;
+    max-height:120px;
+    object-fit:cover;
+    border-radius:10px;
+    margin-bottom:15px;
+    border:1px solid #00eaff;
+    box-shadow:0 0 15px #00eaff;
+    display:block;
+    margin-left:auto;
+    margin-right:auto;
+}
+
+button{
+    width:100%;
+    padding:12px;
+    margin-top:10px;
+    background:black;
+    color:#00eaff;
+    border:1px solid #00eaff;
+    cursor:pointer;
+}
+
+.tab-content{
+    display:none;
+}
+
+.active{
+    display:block;
+}
+
+pre{
+    white-space:pre-wrap;
+}
+
+/* RGB Buttons */
+.social-buttons{
+    display:flex;
+    justify-content:center;
+    gap:15px;
+    margin-top:30px;
+    flex-wrap:wrap;
+}
+
+.rgb-btn{
+    padding:14px 28px;
+    font-size:16px;
+    font-weight:bold;
+    border:none;
+    border-radius:12px;
+    cursor:pointer;
+    color:white;
+    background:linear-gradient(45deg, red, blue, lime, cyan, magenta);
+    background-size:400%;
+    animation:rgb 10s linear infinite;
+    box-shadow:0 0 20px rgba(0,255,255,.7);
+}
+
+@keyframes rgb{
+    0%{background-position:0% 50%;}
+    50%{background-position:100% 50%;}
+    100%{background-position:0% 50%;}
+}
+</style>
+</head>
+<body>
+
+<div id="loader">
+<img src="https://raw.githubusercontent.com/AbhiModszYT/AbhiModszYT/main/Gojo.gif">
+<h2>AbhiModszYT Loading...</h2>
+</div>
+
+<div class="bg"></div>
+<div id="aura"></div>
+<div id="flash"></div>
+
+<audio id="clickSound" src="https://raw.githubusercontent.com/AbhiModszYT/AbhiModszYT/main/gojo.mp3"></audio>
+
+<div class="container">
+<h1>AbhiModszYT Mods Hub</h1>
+
+<div class="tabs">
+<button class="tab-btn" onclick="openTab('apk')">APK</button>
+<button class="tab-btn" onclick="openTab('lua')">LUA</button>
+<button class="tab-btn" onclick="openTab('test')">TEST BUILD</button>
+</div>
+
+<div id="apk" class="tab-content active">
+
+<div class="card">
+<div class="card-header" onclick="toggleCard(this)">🚀 War Robots</div>
+<div class="card-body">
+<img src="https://raw.githubusercontent.com/AbhiModszYT/AbhiModszYT/main/WarRoboticon.png">
+<pre>
+🎮 Game Name : War Robots
+🧩 Version : 11.8.0
+🆔 Version Code : **
+📦 Package : com.pixonic.wwr
+⚙️ Variant : Universal
+    
+🔥 WAR ROBOTS MOD FEATURES 🔥
+    
+🛠️ Main Hacks
+➤ No Gravity
+➤ Auto Fire
+➤ No Duration Skills 1
+➤ No Duration Skills 2
+➤ Bots Don’t Shoot & Don’t Move
+➤ Speed Hacks V1 / V2
+➤ Speed Control
+➤ Auto Abilities V1 / V2 / V3
+➤ Ability Duration V1 / V2 / V3
+➤ V3 Stage Duration
+    
+🎯 Aim Features
+➤ Advanced Targeting
+➤ Silent Aim
+➤ Auto Aim
+➤ Aim Invisible
+
+    
+🎮 Player Mods
+➤ FOV View
+➤ Player Size
+➤ Walk-Climb
+➤ Super Jump
+➤ Teleport Map Centre
+➤ Change Target 🎯
+➤ Teleport To Players
+➤ Underground & Fly
+➤ Teleport Position
+➤ Teleport Up & Down
+➤ Teleport Left Right
+    
+⚙️ Physics Mods
+➤ Wall Hack
+➤ Gravity Control
+➤ Anti-Knockback
+➤ Auto OrbitalStrike
+➤ Effect Blocks By Enemys
+    
+⚡ Auto ON Hacks
+➤ AntiStealth Enemy
+➤ AntiStealth Enemy V2
+➤ Weapon No Sleep Shots
+➤ No Cooldown Skills 1
+➤ No Cooldown Skills 2
+➤ No Cooldown Module
+➤ 15m Distance
+➤ No Lock By Module
+➤ No Lock By Ability
+➤ No Lock Ability1 By Pilot
+➤ No Lock Ability2 By Pilot
+➤ PilotEffect1 Enable
+➤ PilotEffect2 Enable
+➤ True Effect Enable
+➤ Disable Block Moves
+➤ Anti-Splash Damage
+    
+☠️ Extermination Mode (ONLY)
+➤ Weapon Range 9999m
+➤ No Recoil
+➤ Radius Damage
+➤ No Ammo Reload Lite
+    
+💎 Resources
+➤ Infinite Resources
+    
+</pre>
+<button onclick="downloadLink('https://xpshort.com/p56V')">⬇ 32 Bit</button>
+<button onclick="downloadLink('https://xpshort.com/4XC7N2')">⬇ 64 Bit</button>
+</div>
+</div>
+
+<div class="card">
+<div class="card-header" onclick="toggleCard(this)">🚀 Mech Arena</div>
+<div class="card-body">
+<img src="https://raw.githubusercontent.com/AbhiModszYT/AbhiModszYT/main/mecharena.png">
+<pre>
+🎮 Game Name: Mech Arena
+🧩 Version: 3.420.00
+📦 Package: com.plarium.mechlegion
+
+🔥 MECH ARENA MOD FEATURES 🔥
+➤ Speed Hack (0–50)
+➤ Speed Hack V2
+➤ No Reload
+➤ No Cooldown
+➤ Anti-Stealth
+➤ No Ability Block
+➤ DeadMark / Increase Damage
+➤ No Invisible
+➤ Multi Ammo Shot
+➤ Blinded
+➤ Enemy Location
+➤ Range Shoot Distance
+➤ Infinite Ammo
+➤ 1 Hit Kill
+➤ Bot Don't Move
+</pre>
+<button onclick="downloadLink('https://xpshort.com/Dj8qhC')">⬇ 32 Bit</button>
+<button onclick="downloadLink('https://xpshort.com/XUQn')">⬇ 64 Bit</button>
+</div>
+</div>
+
+</div>
+
+<div id="lua" class="tab-content">
+<div class="card">
+<div class="card-header" onclick="toggleCard(this)">🚀 LUA Mech Arena</div>
+<div class="card-body">
+<img src="https://raw.githubusercontent.com/AbhiModszYT/AbhiModszYT/main/mecharena.png">
+<pre>
+➤ Speed Hack
+➤ No Reload
+➤ No Cooldown
+➤ Anti-Stealth
+➤ No Ability Block
+</pre>
+<button onclick="downloadLink('https://xpshort.com/EXwAZR')">⬇ Script</button>
+</div>
+</div>
+</div>
+
+<div id="test" class="tab-content">
+<div class="card">
+<div class="card-header" onclick="toggleCard(this)">🚀 WR Test Build</div>
+<div class="card-body">
+<img src="https://raw.githubusercontent.com/AbhiModszYT/AbhiModszYT/main/icon.png">
+<pre>
+🎮 Game Name : WR Test
+🧩 Version : 12.0.0
+🆔 Version Code : **
+📦 Package : com.pixonic.wwr.cmtest
+⚙️ Variant : Universal
+    
+🔥 WAR ROBOTS MOD FEATURES 🔥
+    
+🛠️ Main Hacks
+➤ No Gravity
+➤ Auto Fire
+➤ No Duration Skills 1
+➤ No Duration Skills 2
+➤ Bots Don’t Shoot & Don’t Move
+➤ Speed Hacks V1 / V2
+➤ Speed Control
+➤ Auto Abilities V1 / V2 / V3
+➤ Ability Duration V1 / V2 / V3
+➤ V3 Stage Duration
+    
+🎯 Aim Features
+➤ Advanced Targeting
+➤ Silent Aim
+➤ Auto Aim
+➤ Aim Invisible
+
+    
+🎮 Player Mods
+➤ FOV View
+➤ Player Size
+➤ Walk-Climb
+➤ Super Jump
+➤ Teleport Map Centre
+➤ Change Target 🎯
+➤ Teleport To Players
+➤ Underground & Fly
+➤ Teleport Position
+➤ Teleport Up & Down
+➤ Teleport Left Right
+    
+⚙️ Physics Mods
+➤ Wall Hack
+➤ Gravity Control
+➤ Anti-Knockback
+➤ Auto OrbitalStrike
+➤ Effect Blocks By Enemys
+    
+⚡ Auto ON Hacks
+➤ AntiStealth Enemy
+➤ AntiStealth Enemy V2
+➤ Weapon No Sleep Shots
+➤ No Cooldown Skills 1
+➤ No Cooldown Skills 2
+➤ No Cooldown Module
+➤ 15m Distance
+➤ No Lock By Module
+➤ No Lock By Ability
+➤ No Lock Ability1 By Pilot
+➤ No Lock Ability2 By Pilot
+➤ PilotEffect1 Enable
+➤ PilotEffect2 Enable
+➤ True Effect Enable
+➤ Disable Block Moves
+➤ Anti-Splash Damage
+    
+☠️ Extermination Mode (ONLY)
+➤ Weapon Range 9999m
+➤ No Recoil
+➤ Radius Damage
+➤ No Ammo Reload Lite
+    
+💎 Resources
+➤ Infinite Resources
+    
+
+</pre>
+<button onclick="downloadLink('https://xpshort.com/MouWC4')">⬇ 32 Bit</button>
+<button onclick="downloadLink('https://xpshort.com/e9h6Q')">⬇ 64 Bit</button>
+</div>
+</div>
+</div>
+
+<div class="social-buttons">
+<button class="rgb-btn" onclick="openSocial('https://youtube.com/@abhimods')">▶ YouTube</button>
+<button class="rgb-btn" onclick="openSocial('https://t.me/+j0xujYtojAQzYmNl')">✈ Telegram</button>
+</div>
+
+</div>
+
+<script>
+window.addEventListener("load",()=>{
+setTimeout(()=>{
+loader.style.opacity="0";
+setTimeout(()=>loader.style.display="none",1000);
+},3500);
+});
+
+function openTab(tab){
+document.querySelectorAll('.tab-content').forEach(t=>t.classList.remove('active'));
+document.getElementById(tab).classList.add('active');
+}
+
+function toggleCard(el){
+const body=el.nextElementSibling;
+body.style.display=body.style.display==="block"?"none":"block";
+document.getElementById("clickSound").play();
+
+const flash=document.getElementById("flash");
+flash.style.opacity="1";
+setTimeout(()=>flash.style.opacity="0",250);
+}
+
+function downloadLink(link){
+document.getElementById("clickSound").play();
+window.location.href=link;
+}
+
+function openSocial(link){
+document.getElementById("clickSound").play();
+window.open(link,'_blank');
+}
+</script>
+
+</body>
+</html>
