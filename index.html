@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>AbhiModszYT Mods Hub</title>
+<title>AbhiModszYT Mods</title>
 
 <style>
 body{
@@ -11,6 +11,8 @@ body{
     background:black;
     color:#00ffcc;
     font-family:monospace;
+    user-select:none;
+    -webkit-user-select:none;
 }
 
 #loader{
@@ -69,16 +71,6 @@ h1{
     border:1px solid #00eaff;
 }
 
-button{
-    width:100%;
-    padding:12px;
-    margin-top:10px;
-    background:black;
-    color:#00eaff;
-    border:1px solid #00eaff;
-    cursor:pointer;
-}
-
 .social-buttons{
     display:flex;
     flex-direction:column;
@@ -109,7 +101,6 @@ button{
 
 <body>
 
-<!-- 🔊 OLD SOUND -->
 <audio id="clickSound" src="https://raw.githubusercontent.com/AbhiModszYT/AbhiModszYT/main/gojo.mp3"></audio>
 
 <div id="loader">
@@ -130,11 +121,10 @@ button{
 📦 Package : com.pixonic.wwr
 🔥 MOD FEATURES AVAILABLE
 </pre>
-
-<button onclick="getKey()">🔑 Get Key</button>
 </div>
 </div>
 
+<!-- BUTTONS -->
 <div class="social-buttons">
 
 <button class="rgb-btn" onclick="openSocial('https://youtube.com/@abhimods')">
@@ -143,6 +133,14 @@ button{
 
 <button class="rgb-btn" onclick="openSocial('https://t.me/+j0xujYtojAQzYmNl')">
 ✈ Teleport
+</button>
+
+<button class="rgb-btn" onclick="getKey()">
+🔑 Get Key
+</button>
+
+<button class="rgb-btn" onclick="openSocial('https://youtu.be/VTqDCLZasZQ?si=1Wxt6M9kSz7KkfLn')">
+▶ How to Get Key
 </button>
 
 </div>
@@ -156,21 +154,41 @@ document.getElementById("loader").style.display="none";
 },2000);
 });
 
+// 🔊 Sound
 function playSound(){
 let s=document.getElementById("clickSound");
 s.currentTime=0;
 s.play();
 }
 
+// 🔑 Key
 function getKey(){
 playSound();
 window.open("https://t.me/+j0xujYtojAQzYmNl","_blank");
 }
 
+// 🌐 Open links
 function openSocial(link){
 playSound();
 window.open(link,"_blank");
 }
+
+/* 🚫 ANTI COPY BASIC */
+document.addEventListener("contextmenu", e => e.preventDefault());
+
+document.addEventListener("keydown", function(e){
+if(
+    (e.ctrlKey && ["u","U","s","S","c","C"].includes(e.key))
+){
+    e.preventDefault();
+    alert("⚠️ Action blocked!");
+}
+});
+
+document.addEventListener("copy", function(e){
+e.preventDefault();
+alert("⚠️ Copying is disabled!");
+});
 </script>
 
 </body>
