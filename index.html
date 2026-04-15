@@ -84,6 +84,8 @@ button{
 
 .social-buttons{
     display:flex;
+    flex-direction:column;
+    gap:10px;
     justify-content:center;
     margin-top:30px;
 }
@@ -135,9 +137,15 @@ button{
 </div>
 
 <div class="social-buttons">
+
 <button class="rgb-btn" onclick="openSocial('https://youtube.com/@abhimods')">
 ▶ YouTube
 </button>
+
+<button class="rgb-btn" onclick="openSocial('https://t.me/+j0xujYtojAQzYmNl')">
+✈ Teleport
+</button>
+
 </div>
 
 </div>
@@ -150,7 +158,7 @@ document.getElementById("loader").style.display="none";
 });
 
 function getKey(){
-alert("🔑 Key System Coming Soon!");
+window.open("https://t.me/+j0xujYtojAQzYmNl","_blank");
 }
 
 function openSocial(link){
