@@ -53,7 +53,6 @@ h1{
 .card-header{
     padding:15px;
     font-weight:bold;
-    cursor:pointer;
 }
 
 .card-body{
@@ -64,8 +63,6 @@ h1{
 .card-body img{
     width:100%;
     max-width:220px;
-    max-height:120px;
-    object-fit:cover;
     border-radius:10px;
     margin:auto;
     display:block;
@@ -86,7 +83,6 @@ button{
     display:flex;
     flex-direction:column;
     gap:10px;
-    justify-content:center;
     margin-top:30px;
 }
 
@@ -112,6 +108,9 @@ button{
 </head>
 
 <body>
+
+<!-- 🔊 OLD SOUND -->
+<audio id="clickSound" src="https://raw.githubusercontent.com/AbhiModszYT/AbhiModszYT/main/gojo.mp3"></audio>
 
 <div id="loader">
 <img src="https://raw.githubusercontent.com/AbhiModszYT/AbhiModszYT/main/Gojo.gif">
@@ -157,11 +156,19 @@ document.getElementById("loader").style.display="none";
 },2000);
 });
 
+function playSound(){
+let s=document.getElementById("clickSound");
+s.currentTime=0;
+s.play();
+}
+
 function getKey(){
+playSound();
 window.open("https://t.me/+j0xujYtojAQzYmNl","_blank");
 }
 
 function openSocial(link){
+playSound();
 window.open(link,"_blank");
 }
 </script>
