@@ -11,7 +11,6 @@ body{
     background:black;
     color:#00ffcc;
     font-family:monospace;
-    overflow-x:hidden;
 }
 
 #loader{
@@ -24,8 +23,8 @@ body{
     justify-content:center;
     align-items:center;
     z-index:9999;
-    transition:1s;
 }
+
 #loader img{
     width:230px;
     border-radius:12px;
@@ -35,6 +34,132 @@ body{
 .container{
     max-width:900px;
     margin:auto;
+    padding:20px;
+}
+
+h1{
+    text-align:center;
+    text-shadow:0 0 20px #00eaff;
+}
+
+.card{
+    background:rgba(0,0,0,.85);
+    border:1px solid #00eaff;
+    border-radius:12px;
+    margin-top:20px;
+    box-shadow:0 0 15px #00eaff;
+}
+
+.card-header{
+    padding:15px;
+    font-weight:bold;
+    cursor:pointer;
+}
+
+.card-body{
+    display:block;
+    padding:15px;
+}
+
+.card-body img{
+    width:100%;
+    max-width:220px;
+    max-height:120px;
+    object-fit:cover;
+    border-radius:10px;
+    margin:auto;
+    display:block;
+    border:1px solid #00eaff;
+}
+
+button{
+    width:100%;
+    padding:12px;
+    margin-top:10px;
+    background:black;
+    color:#00eaff;
+    border:1px solid #00eaff;
+    cursor:pointer;
+}
+
+.social-buttons{
+    display:flex;
+    justify-content:center;
+    margin-top:30px;
+}
+
+.rgb-btn{
+    padding:14px 28px;
+    font-size:16px;
+    font-weight:bold;
+    border:none;
+    border-radius:12px;
+    cursor:pointer;
+    color:white;
+    background:linear-gradient(45deg, red, blue, lime, cyan, magenta);
+    background-size:400%;
+    animation:rgb 10s linear infinite;
+}
+
+@keyframes rgb{
+    0%{background-position:0% 50%;}
+    50%{background-position:100% 50%;}
+    100%{background-position:0% 50%;}
+}
+</style>
+</head>
+
+<body>
+
+<div id="loader">
+<img src="https://raw.githubusercontent.com/AbhiModszYT/AbhiModszYT/main/Gojo.gif">
+<h2>Loading...</h2>
+</div>
+
+<div class="container">
+<h1>AbhiModszYT Mods Hub</h1>
+
+<div class="card">
+<div class="card-header">🚀 War Robots</div>
+<div class="card-body">
+<img src="https://raw.githubusercontent.com/AbhiModszYT/AbhiModszYT/main/WarRoboticon.png">
+
+<pre>
+🎮 Game Name : War Robots
+📦 Package : com.pixonic.wwr
+🔥 MOD FEATURES AVAILABLE
+</pre>
+
+<button onclick="getKey()">🔑 Get Key</button>
+</div>
+</div>
+
+<div class="social-buttons">
+<button class="rgb-btn" onclick="openSocial('https://youtube.com/@abhimods')">
+▶ YouTube
+</button>
+</div>
+
+</div>
+
+<script>
+window.addEventListener("load",()=>{
+setTimeout(()=>{
+document.getElementById("loader").style.display="none";
+},2000);
+});
+
+function getKey(){
+alert("🔑 Key System Coming Soon!");
+}
+
+function openSocial(link){
+window.open(link,"_blank");
+}
+</script>
+
+</body>
+</html>    margin:auto;
     padding:20px;
     padding-bottom:130px;
 }
