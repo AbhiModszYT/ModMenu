@@ -250,7 +250,6 @@ let serverStatus = {
 };
 
 function handleServer(link, serverId){
-function handleServer(link, serverId){
     playSound();
 
     if(!serverStatus[serverId]){
@@ -264,14 +263,13 @@ function handleServer(link, serverId){
         setServerOff(serverId);
         return;
     }
+
     setTimeout(()=>{
         try{
             if(!win || win.closed){
                 setServerOff(serverId);
             }
-        }catch(e){
-    
-        }
+        }catch(e){}
     }, 3000);
 }
 
@@ -284,7 +282,8 @@ function setServerOff(serverId){
 
     alert("⚠️ Server " + serverId + " is down! Please use another server.");
 }
-</script>    
+
+</script>
     
 <script>
 window.addEventListener("load",()=>{
