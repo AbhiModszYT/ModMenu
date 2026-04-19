@@ -245,40 +245,42 @@ h1{
 <script>
 let serverStatus = {
     1: false,
-    2: true,
+    2: true
 };
+
+function updateServerUI(){
+    for(let id in serverStatus){
+        let btn = document.getElementById("server" + id + "Btn");
+
+        if(serverStatus[id]){
+            btn.innerText = "🔑 Get Key Server " + id;
+            btn.style.opacity = "1";
+        } else {
+            btn.innerText = "🔑 Get Key Server " + id + " (OFF)";
+            btn.style.opacity = "0.5";
+        }
+    }
+}
 
 function handleServer(link, serverId){
     playSound();
 
     if(!serverStatus[serverId]){
-        alert("⚠️ Server " + serverId + " is currently OFF. Try Server 1.");
+        alert("⚠️ Server " + serverId + " is OFF.");
         return;
     }
 
     let win = window.open(link, "_blank");
 
-    // ONLY popup blocked case
     if(!win){
-        setServerOff(serverId);
+        serverStatus[serverId] = false;
+        updateServerUI();
+        alert("⚠️ Server " + serverId + " blocked! Auto OFF.");
     }
 }
 
-function setServerOff(serverId){
-    serverStatus[serverId] = false;
-
-    let btn = document.getElementById("server" + serverId + "Btn");
-    btn.innerText = "🔑 Server " + serverId + " (OFF)";
-    btn.style.opacity = "0.5";
-
-    alert("⚠️ Server " + serverId + " is down! Use Server 1.");
-}
-
-// 👇 Page load pe Server 2 OFF dikhe
 window.addEventListener("load", ()=>{
-    let btn2 = document.getElementById("server2Btn");
-    btn2.innerText = "🔑 Get Key Server 2 (OFF)";
-    btn2.style.opacity = "0.5";
+    updateServerUI();
 });
 </script>
     
