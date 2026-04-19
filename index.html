@@ -277,7 +277,7 @@ function loadLogs(){
     let container = document.getElementById("logsContent");
     container.innerHTML = "";
 
-    logs.slice().reverse().forEach(log => {
+    logs.forEach(log => {
         let p = document.createElement("p");
         p.innerText = log;
         p.style.borderBottom = "1px solid #00eaff";
