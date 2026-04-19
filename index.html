@@ -14,7 +14,10 @@ body{
     user-select:none;
     -webkit-user-select:none;
 }
-
+#logsContent{
+    max-height:200px;
+    overflow-y:auto;
+}
 #loader{
     position:fixed;
     width:100%;
@@ -237,10 +240,56 @@ h1{
 <button class="rgb-btn" onclick="openSocial('https://youtu.be/VTqDCLZasZQ?si=1Wxt6M9kSz7KkfLn')">
 ▶ How to Get Key
 </button>
+    
+<button class="rgb-btn" onclick="toggleLogsMenu()">
+📜 Logs / Updates
+</button>
 
+<div id="logsMenu" style="display:none; margin-top:15px;" class="card">
+<div class="card-header">📜 Latest Updates</div>
+<div class="card-body" id="logsContent">
+</div>
+</div>
+    
+</div>
 </div>
 
-</div>
+<script>
+let logs = [
+    "📅 17 Apr 2026 - 🔥 Updated Get Keys Links",
+    "📅 16 Apr 2026 - 🛠️ UI Improvements"
+];
+
+let logsLoaded = false;
+
+function toggleLogsMenu(){
+function toggleLogsMenu(){
+    playSound();
+    let menu = document.getElementById("logsMenu");
+
+    if(menu.style.display === "none" || menu.style.display === ""){
+        menu.style.display = "block";
+        loadLogs();
+    } else {
+        menu.style.display = "none";
+    }
+    }
+
+function loadLogs(){
+    let container = document.getElementById("logsContent");
+    container.innerHTML = "";
+
+    logs.slice().reverse().forEach(log => {
+        let p = document.createElement("p");
+        p.innerText = log;
+        p.style.borderBottom = "1px solid #00eaff";
+        p.style.paddingBottom = "6px";
+        p.style.marginBottom = "10px";
+        container.appendChild(p);
+    });
+}
+</script>
+    
 
 <script>
 let serverStatus = {
