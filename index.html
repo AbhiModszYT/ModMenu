@@ -218,9 +218,21 @@ h1{
 ✈ Telegram Channel 
 </button>
 
-<button class="rgb-btn" onclick="getKey()">
+<button class="rgb-btn" onclick="toggleKeyMenu()">
 🔑 Get Key
 </button>
+
+<div id="keyMenu" style="display:none; margin-top:15px;">
+
+<button class="rgb-btn" onclick="openSocial('https://shrinkme.click/r7PYtp2')">
+🔑 Get Key Server 1
+</button>
+
+<button class="rgb-btn" onclick="openSocial('https://xtglinks.com/ClwRuBb')">
+🔑 Get Key Server 2
+</button>
+
+</div>
 
 <button class="rgb-btn" onclick="openSocial('https://youtu.be/VTqDCLZasZQ?si=1Wxt6M9kSz7KkfLn')">
 ▶ How to Get Key
@@ -256,6 +268,20 @@ playSound();
 window.open(link,"_blank");
 }
 
+// 🔽 Toggle Key Menu
+function toggleKeyMenu(){
+    playSound();
+    let menu = document.getElementById("keyMenu");
+
+    if(menu.style.display === "none" || menu.style.display === ""){
+        menu.style.display = "flex";
+        menu.style.flexDirection = "column";
+        menu.style.gap = "10px";
+    } else {
+        menu.style.display = "none";
+    }
+}
+
 /* 🚫 ANTI COPY BASIC */
 document.addEventListener("contextmenu", e => e.preventDefault());
 
@@ -273,6 +299,3 @@ e.preventDefault();
 alert("⚠️ Copying is disabled!");
 });
 </script>
-
-</body>
-</html>
