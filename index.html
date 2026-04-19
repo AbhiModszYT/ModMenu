@@ -251,7 +251,6 @@ let serverStatus = {
 function handleServer(link, serverId){
     playSound();
 
-    // Server OFF
     if(!serverStatus[serverId]){
         alert("⚠️ Server " + serverId + " is currently OFF. Try Server 1.");
         return;
@@ -259,20 +258,10 @@ function handleServer(link, serverId){
 
     let win = window.open(link, "_blank");
 
-    // Popup blocked
+    // ONLY popup blocked case
     if(!win){
         setServerOff(serverId);
-        return;
     }
-
-    // Fail detect (safe)
-    setTimeout(()=>{
-        try{
-            if(!win || win.closed){
-                setServerOff(serverId);
-            }
-        }catch(e){}
-    }, 3000);
 }
 
 function setServerOff(serverId){
