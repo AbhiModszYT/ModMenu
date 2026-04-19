@@ -243,7 +243,6 @@ h1{
 </div>
 
 <script>
-
 let serverStatus = {
     1: true,
     2: false,
@@ -252,18 +251,21 @@ let serverStatus = {
 function handleServer(link, serverId){
     playSound();
 
+    // Server OFF
     if(!serverStatus[serverId]){
-        alert("⚠️ Server " + serverId + " is currently OFF. Try another server.");
+        alert("⚠️ Server " + serverId + " is currently OFF. Try Server 1.");
         return;
     }
 
     let win = window.open(link, "_blank");
 
+    // Popup blocked
     if(!win){
         setServerOff(serverId);
         return;
     }
 
+    // Fail detect (safe)
     setTimeout(()=>{
         try{
             if(!win || win.closed){
@@ -280,9 +282,15 @@ function setServerOff(serverId){
     btn.innerText = "🔑 Server " + serverId + " (OFF)";
     btn.style.opacity = "0.5";
 
-    alert("⚠️ Server " + serverId + " is down! Please use another server.");
+    alert("⚠️ Server " + serverId + " is down! Use Server 1.");
 }
 
+// 👇 Page load pe Server 2 OFF dikhe
+window.addEventListener("load", ()=>{
+    let btn2 = document.getElementById("server2Btn");
+    btn2.innerText = "🔑 Get Key Server 2 (OFF)";
+    btn2.style.opacity = "0.5";
+});
 </script>
     
 <script>
