@@ -260,8 +260,6 @@ let logs = [
     "📅 16 Apr 2026 - 🛠️ UI Improvements"
 ];
 
-let logsLoaded = false;
-
 function toggleLogsMenu(){
     playSound();
     let menu = document.getElementById("logsMenu");
@@ -272,7 +270,7 @@ function toggleLogsMenu(){
     } else {
         menu.style.display = "none";
     }
-    }
+}
 
 function loadLogs(){
     let container = document.getElementById("logsContent");
