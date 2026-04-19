@@ -224,11 +224,11 @@ h1{
 
 <div id="keyMenu" style="display:none; margin-top:15px;">
 
-<button class="rgb-btn" onclick="openSocial('https://shrinkme.click/r7PYtp2')">
+<button id="server1Btn" class="rgb-btn" onclick="handleServer('https://shrinkme.click/r7PYtp2', 1)">
 🔑 Get Key Server 1
 </button>
 
-<button class="rgb-btn" onclick="openSocial('https://xtglinks.com/ClwRuBb')">
+<button id="server2Btn" class="rgb-btn" onclick="handleServer('https://xtglinks.com/ClwRuBb', 2)">
 🔑 Get Key Server 2
 </button>
 
@@ -242,6 +242,50 @@ h1{
 
 </div>
 
+<script>
+
+let serverStatus = {
+    1: true,
+    2: false,
+};
+
+function handleServer(link, serverId){
+function handleServer(link, serverId){
+    playSound();
+
+    if(!serverStatus[serverId]){
+        alert("⚠️ Server " + serverId + " is currently OFF. Try another server.");
+        return;
+    }
+
+    let win = window.open(link, "_blank");
+
+    if(!win){
+        setServerOff(serverId);
+        return;
+    }
+    setTimeout(()=>{
+        try{
+            if(!win || win.closed){
+                setServerOff(serverId);
+            }
+        }catch(e){
+    
+        }
+    }, 3000);
+}
+
+function setServerOff(serverId){
+    serverStatus[serverId] = false;
+
+    let btn = document.getElementById("server" + serverId + "Btn");
+    btn.innerText = "🔑 Server " + serverId + " (OFF)";
+    btn.style.opacity = "0.5";
+
+    alert("⚠️ Server " + serverId + " is down! Please use another server.");
+}
+</script>    
+    
 <script>
 window.addEventListener("load",()=>{
 setTimeout(()=>{
