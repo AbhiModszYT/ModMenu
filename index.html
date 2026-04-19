@@ -249,26 +249,22 @@ document.getElementById("loader").style.display="none";
 },2000);
 });
 
-// 🔊 Sound
 function playSound(){
 let s=document.getElementById("clickSound");
 s.currentTime=0;
 s.play();
 }
 
-// 🔑 Key
 function getKey(){
 playSound();
 window.open("https://xtglinks.com/TfGF","_blank");
 }
 
-// 🌐 Open links
 function openSocial(link){
 playSound();
 window.open(link,"_blank");
 }
 
-// 🔽 Toggle Key Menu
 function toggleKeyMenu(){
     playSound();
     let menu = document.getElementById("keyMenu");
@@ -282,7 +278,6 @@ function toggleKeyMenu(){
     }
 }
 
-/* 🚫 ANTI COPY BASIC */
 document.addEventListener("contextmenu", e => e.preventDefault());
 
 document.addEventListener("keydown", function(e){
