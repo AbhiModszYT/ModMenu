@@ -1,125 +1,377 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>AbhiModszYT Mods</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AbhiModszYT Mods - Premium Mod Menu</title>
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-<style>
-body{
-    margin:0;
-    background:black;
-    color:#00ffcc;
-    font-family:monospace;
-    user-select:none;
-    -webkit-user-select:none;
-}
-#logsContent{
-    max-height:200px;
-    overflow-y:auto;
-}
-#loader{
-    position:fixed;
-    width:100%;
-    height:100%;
-    background:black;
-    display:flex;
-    flex-direction:column;
-    justify-content:center;
-    align-items:center;
-    z-index:9999;
-}
+        :root {
+            --primary-color: #00ffcc;
+            --secondary-color: #00eaff;
+            --accent-color: #ff006e;
+            --dark-bg: #0a0e27;
+            --card-bg: rgba(10, 14, 39, 0.95);
+            --border-color: #00ffcc;
+            --text-color: #00ffcc;
+        }
 
-#loader img{
-    width:230px;
-    border-radius:12px;
-    box-shadow:0 0 35px #00eaff;
-}
+        html {
+            scroll-behavior: smooth;
+        }
 
-.container{
-    max-width:900px;
-    margin:auto;
-    padding:20px;
-}
+        body {
+            background: linear-gradient(135deg, var(--dark-bg) 0%, #1a1a3e 100%);
+            color: var(--text-color);
+            font-family: 'Courier New', monospace;
+            user-select: none;
+            -webkit-user-select: none;
+            overflow-x: hidden;
+        }
 
-h1{
-    text-align:center;
-    text-shadow:0 0 20px #00eaff;
-}
+        /* Scrollbar Styling */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
 
-.card{
-    background:rgba(0,0,0,.85);
-    border:1px solid #00eaff;
-    border-radius:12px;
-    margin-top:20px;
-    box-shadow:0 0 15px #00eaff;
-}
+        ::-webkit-scrollbar-track {
+            background: rgba(0, 255, 204, 0.1);
+        }
 
-.card-header{
-    padding:15px;
-    font-weight:bold;
-}
+        ::-webkit-scrollbar-thumb {
+            background: var(--primary-color);
+            border-radius: 4px;
+        }
 
-.card-body{
-    display:block;
-    padding:15px;
-}
+        ::-webkit-scrollbar-thumb:hover {
+            background: var(--secondary-color);
+        }
 
-.card-body img{
-    width:100%;
-    max-width:220px;
-    border-radius:10px;
-    margin:auto;
-    display:block;
-    border:1px solid #00eaff;
-}
+        /* Loader */
+        #loader {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, var(--dark-bg) 0%, #1a1a3e 100%);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+            animation: fadeOut 0.5s ease-in-out 1.5s forwards;
+        }
 
-.social-buttons{
-    display:flex;
-    flex-direction:column;
-    gap:10px;
-    margin-top:30px;
-}
+        #loader img {
+            width: 220px;
+            height: 220px;
+            border-radius: 16px;
+            box-shadow: 0 0 40px var(--secondary-color), 0 0 20px rgba(0, 234, 255, 0.5);
+            animation: pulse 1s ease-in-out infinite;
+        }
 
-.rgb-btn{
-    padding:14px 28px;
-    font-size:16px;
-    font-weight:bold;
-    border:none;
-    border-radius:12px;
-    cursor:pointer;
-    color:white;
-    background:linear-gradient(45deg, red, blue, lime, cyan, magenta);
-    background-size:400%;
-    animation:rgb 10s linear infinite;
-}
+        #loader h2 {
+            margin-top: 20px;
+            font-size: 18px;
+            text-shadow: 0 0 10px var(--secondary-color);
+            letter-spacing: 2px;
+        }
 
-@keyframes rgb{
-    0%{background-position:0% 50%;}
-    50%{background-position:100% 50%;}
-    100%{background-position:0% 50%;}
-}
-</style>
+        @keyframes fadeOut {
+            to {
+                opacity: 0;
+                visibility: hidden;
+            }
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+
+        /* Container */
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        /* Header */
+        h1 {
+            text-align: center;
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            text-shadow: 0 0 30px var(--secondary-color);
+            letter-spacing: 2px;
+            animation: slideDown 0.8s ease-out;
+        }
+
+        .subtitle {
+            text-align: center;
+            font-size: 0.9em;
+            color: rgba(0, 255, 204, 0.7);
+            margin-bottom: 30px;
+            letter-spacing: 1px;
+        }
+
+        @keyframes slideDown {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Card */
+        .card {
+            background: var(--card-bg);
+            border: 2px solid var(--border-color);
+            border-radius: 16px;
+            margin-top: 25px;
+            box-shadow: 0 0 25px rgba(0, 255, 204, 0.2), inset 0 0 20px rgba(0, 255, 204, 0.05);
+            overflow: hidden;
+            transition: all 0.3s ease;
+            animation: slideUp 0.8s ease-out;
+        }
+
+        .card:hover {
+            box-shadow: 0 0 35px rgba(0, 255, 204, 0.4), inset 0 0 20px rgba(0, 255, 204, 0.1);
+            border-color: var(--secondary-color);
+            transform: translateY(-5px);
+        }
+
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .card-header {
+            padding: 18px;
+            font-weight: bold;
+            font-size: 1.3em;
+            background: linear-gradient(90deg, rgba(0, 255, 204, 0.15) 0%, rgba(0, 234, 255, 0.15) 100%);
+            border-bottom: 1px solid var(--border-color);
+            letter-spacing: 1px;
+        }
+
+        .card-body {
+            padding: 20px;
+            display: block;
+        }
+
+        .card-body img {
+            width: 100%;
+            max-width: 240px;
+            height: auto;
+            border-radius: 12px;
+            margin: 0 auto 20px;
+            display: block;
+            border: 2px solid var(--border-color);
+            box-shadow: 0 0 20px rgba(0, 255, 204, 0.2);
+            transition: transform 0.3s ease;
+        }
+
+        .card-body img:hover {
+            transform: scale(1.05);
+        }
+
+        .card-body pre {
+            background: rgba(0, 255, 204, 0.05);
+            border: 1px solid rgba(0, 255, 204, 0.2);
+            border-radius: 8px;
+            padding: 15px;
+            overflow-x: auto;
+            font-size: 0.95em;
+            line-height: 1.6;
+            max-height: 400px;
+            overflow-y: auto;
+        }
+
+        /* Buttons */
+        .social-buttons {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            margin-top: 30px;
+            animation: slideUp 0.8s ease-out 0.2s both;
+        }
+
+        .rgb-btn {
+            padding: 16px 32px;
+            font-size: 16px;
+            font-weight: bold;
+            border: none;
+            border-radius: 12px;
+            cursor: pointer;
+            color: white;
+            text-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+            background: linear-gradient(90deg, #ff006e, #8338ec, #3a86ff, #06ffa5);
+            background-size: 300%;
+            animation: gradient-shift 4s ease infinite;
+            box-shadow: 0 0 20px rgba(255, 0, 110, 0.4);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .rgb-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+            transition: left 0.5s;
+        }
+
+        .rgb-btn:hover::before {
+            left: 100%;
+        }
+
+        .rgb-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(255, 0, 110, 0.6);
+        }
+
+        .rgb-btn:active {
+            transform: translateY(0);
+        }
+
+        .rgb-btn:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+
+        @keyframes gradient-shift {
+            0% { background-position: 0% center; }
+            50% { background-position: 100% center; }
+            100% { background-position: 0% center; }
+        }
+
+        /* Menu Container */
+        .menu-container {
+            margin-top: 15px;
+        }
+
+        .submenu {
+            display: none;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .submenu.active {
+            display: flex;
+            animation: slideDown 0.3s ease-out;
+        }
+
+        /* Logs */
+        #logsContent {
+            max-height: 250px;
+            overflow-y: auto;
+        }
+
+        #logsContent p {
+            border-bottom: 1px solid rgba(0, 255, 204, 0.3);
+            padding-bottom: 10px;
+            margin-bottom: 12px;
+            font-size: 0.95em;
+            transition: color 0.2s ease;
+        }
+
+        #logsContent p:hover {
+            color: var(--secondary-color);
+        }
+
+        #logsContent p:last-child {
+            border-bottom: none;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2em;
+            }
+
+            .container {
+                padding: 20px 15px;
+            }
+
+            .rgb-btn {
+                padding: 14px 24px;
+                font-size: 15px;
+            }
+
+            #loader img {
+                width: 180px;
+                height: 180px;
+            }
+
+            .card-body pre {
+                font-size: 0.85em;
+                padding: 12px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            h1 {
+                font-size: 1.6em;
+            }
+
+            .container {
+                padding: 15px 10px;
+            }
+
+            .rgb-btn {
+                padding: 12px 20px;
+                font-size: 14px;
+            }
+
+            .card-header {
+                font-size: 1.1em;
+            }
+
+            .card-body pre {
+                font-size: 0.8em;
+                padding: 10px;
+            }
+        }
+    </style>
 </head>
 
 <body>
 
-<audio id="clickSound" src="https://raw.githubusercontent.com/AbhiModszYT/AbhiModszYT/main/gojo.mp3"></audio>
+<audio id="clickSound" preload="auto"></audio>
 
 <div id="loader">
-<img src="https://raw.githubusercontent.com/AbhiModszYT/AbhiModszYT/main/Gojo.gif">
-<h2>Loading...</h2>
+    <img src="https://raw.githubusercontent.com/AbhiModszYT/AbhiModszYT/main/Gojo.gif" alt="Loading..." loading="lazy">
+    <h2>⚡ Loading...</h2>
 </div>
 
 <div class="container">
-<h1>AbhiModszYT Mods</h1>
+    <h1>AbhiModszYT Mods</h1>
+    <p class="subtitle">Premium Mod Menu - Enhanced Gaming Experience</p>
 
-<div class="card">
-<div class="card-header">🚀 War Robots</div>
-<div class="card-body">
-<img src="https://raw.githubusercontent.com/AbhiModszYT/AbhiModszYT/main/WarRoboticon.png">
+    <div class="card">
+        <div class="card-header">🚀 War Robots</div>
+        <div class="card-body">
+            <img src="https://raw.githubusercontent.com/AbhiModszYT/AbhiModszYT/main/WarRoboticon.png" alt="War Robots Icon" loading="lazy">
 
-<pre>
+            <pre>
 🎮 Game Name: War Robots
 🧩 Version: 12.0.0
 🆔 Version Code: **
@@ -162,7 +414,7 @@ h1{
 🧲 Physics
 ➤ No Gravity
 ➤ Wall Hack
-➤ Gravity Global 
+➤ Gravity Global
 ➤ Gravity Value (-15 to 30)
 ➤ Anti Knockback
 ➤ Wall Climb
@@ -205,182 +457,210 @@ h1{
 ➤ No Recoil
 ➤ Radius Damage
 ➤ No Ammo Reload Lite
+            </pre>
+        </div>
+    </div>
 
-</pre>
-</div>
-</div>
+    <!-- BUTTONS -->
+    <div class="social-buttons">
 
-<!-- BUTTONS -->
-<div class="social-buttons">
+        <button class="rgb-btn" onclick="openLink('https://youtube.com/@abhimods', event)" title="Visit YouTube Channel">
+            ▶ YouTube Channel
+        </button>
 
-<button class="rgb-btn" onclick="openSocial('https://youtube.com/@abhimods')">
-▶ YouTube
-</button>
+        <button class="rgb-btn" onclick="openLink('https://t.me/+j0xujYtojAQzYmNl', event)" title="Join Telegram Channel">
+            ✈ Telegram Channel
+        </button>
 
-<button class="rgb-btn" onclick="openSocial('https://t.me/+j0xujYtojAQzYmNl')">
-✈ Telegram Channel 
-</button>
+        <button class="rgb-btn" onclick="toggleMenu('keyMenu', event)">
+            🔑 Get Key
+        </button>
 
-<button class="rgb-btn" onclick="toggleKeyMenu()">
-🔑 Get Key
-</button>
+        <div id="keyMenu" class="menu-container">
+            <div class="submenu">
+                <button id="server1Btn" class="rgb-btn" onclick="handleServer('https://shrinkme.click/yw35xhOI', 1, event)">
+                    🔑 Get Key Server 1
+                </button>
 
-<div id="keyMenu" style="display:none; margin-top:15px;">
+                <button id="server2Btn" class="rgb-btn" onclick="handleServer('https://t.me/AbhiModsZz', 2, event)">
+                    🔑 Get Key Server 2
+                </button>
+            </div>
+        </div>
 
-<button id="server1Btn" class="rgb-btn" onclick="handleServer('https://shrinkme.click/yw35xhOI', 1)">
-🔑 Get Key Server 1
-</button>
+        <button class="rgb-btn" onclick="openLink('https://youtu.be/VTqDCLZasZQ?si=1Wxt6M9kSz7KkfLn', event)" title="Watch Tutorial">
+            ▶ How to Get Key
+        </button>
 
-<button id="server2Btn" class="rgb-btn" onclick="handleServer('https://t.me/AbhiModsZz', 2)">
-🔑 Get Key Server 2
-</button>
+        <button class="rgb-btn" onclick="toggleMenu('logsMenu', event)">
+            📜 Logs / Updates
+        </button>
 
-</div>
+        <div id="logsMenu" class="menu-container">
+            <div class="card submenu">
+                <div class="card-header">📜 Latest Updates</div>
+                <div class="card-body" id="logsContent">
+                </div>
+            </div>
+        </div>
 
-<button class="rgb-btn" onclick="openSocial('https://youtu.be/VTqDCLZasZQ?si=1Wxt6M9kSz7KkfLn')">
-▶ How to Get Key
-</button>
-    
-<button class="rgb-btn" onclick="toggleLogsMenu()">
-📜 Logs / Updates
-</button>
-
-<div id="logsMenu" style="display:none; margin-top:15px;" class="card">
-<div class="card-header">📜 Latest Updates</div>
-<div class="card-body" id="logsContent">
-</div>
-</div>
-    
-</div>
+    </div>
 </div>
 
 <script>
-let logs = [
-    "📅 20 Apr 2026 - Keys Changed",
-    "📅 20 Apr 2026 - Added Multiple Servers",
-    "📅 20 Apr 2026 - 🔥 Updated Get Keys Links",
-    "📅 20 Apr 2026 - 🛠️ UI Improvements"
-];
+    // Configuration
+    const CONFIG = {
+        loaderDelay: 1500,
+        soundUrl: 'https://raw.githubusercontent.com/AbhiModszYT/AbhiModszYT/main/gojo.mp3',
+        logs: [
+            '📅 28 Apr 2026 - 🎨 UI Redesign Complete',
+            '📅 28 Apr 2026 - 🐛 Bug Fixes & Improvements',
+            '📅 28 Apr 2026 - ⚡ Performance Optimization',
+            '📅 28 Apr 2026 - 📱 Mobile Responsive Design',
+            '📅 20 Apr 2026 - Keys Changed',
+            '📅 20 Apr 2026 - Added Multiple Servers',
+            '📅 20 Apr 2026 - 🔥 Updated Get Keys Links',
+            '📅 20 Apr 2026 - 🛠️ UI Improvements'
+        ],
+        serverStatus: {
+            1: true,
+            2: false
+        }
+    };
 
-function toggleLogsMenu(){
-    playSound();
-    let menu = document.getElementById("logsMenu");
-
-    if(menu.style.display === "none" || menu.style.display === ""){
-        menu.style.display = "block";
-        loadLogs();
-    } else {
-        menu.style.display = "none";
+    // Initialize Audio with error handling
+    function initAudio() {
+        const audio = document.getElementById('clickSound');
+        audio.src = CONFIG.soundUrl;
+        audio.addEventListener('error', () => {
+            console.warn('Sound file failed to load');
+        });
     }
-}
 
-function loadLogs(){
-    let container = document.getElementById("logsContent");
-    container.innerHTML = "";
-
-    logs.forEach(log => {
-        let p = document.createElement("p");
-        p.innerText = log;
-        p.style.borderBottom = "1px solid #00eaff";
-        p.style.paddingBottom = "6px";
-        p.style.marginBottom = "10px";
-        container.appendChild(p);
-    });
-}
-</script>
-    
-
-<script>
-let serverStatus = {
-    1: true,
-    2: false,
-};
-
-function updateServerUI(){
-    for(let id in serverStatus){
-        let btn = document.getElementById("server" + id + "Btn");
-
-        if(serverStatus[id]){
-            btn.innerText = "🔑 Get Key Server " + id;
-            btn.style.opacity = "1";
-        } else {
-            btn.innerText = "🔑 Get Key Server " + id + " (OFF)";
-            btn.style.opacity = "0.5";
+    // Play sound with error handling
+    function playSound() {
+        try {
+            const sound = document.getElementById('clickSound');
+            if (sound && sound.src) {
+                sound.currentTime = 0;
+                sound.play().catch(err => console.warn('Play error:', err));
+            }
+        } catch (err) {
+            console.warn('Audio error:', err);
         }
     }
-}
 
-function handleServer(link, serverId){
-    playSound();
-
-    if(!serverStatus[serverId]){
-        alert("⚠️ Server " + serverId + " is OFF.");
-        return;
+    // Open link with sound feedback
+    function openLink(url, event) {
+        event.preventDefault();
+        playSound();
+        window.open(url, '_blank', 'noopener,noreferrer');
     }
 
-    let win = window.open(link, "_blank");
+    // Toggle menu with animation
+    function toggleMenu(menuId, event) {
+        event.preventDefault();
+        playSound();
+        const menu = document.getElementById(menuId);
+        const submenu = menu.querySelector('.submenu');
 
-    if(!win){
-        serverStatus[serverId] = false;
+        if (submenu.classList.contains('active')) {
+            submenu.classList.remove('active');
+        } else {
+            submenu.classList.add('active');
+            if (menuId === 'logsMenu') {
+                loadLogs();
+            }
+        }
+    }
+
+    // Load logs
+    function loadLogs() {
+        const container = document.getElementById('logsContent');
+        
+        // Prevent duplicate loading
+        if (container.children.length > 0) return;
+
+        CONFIG.logs.forEach(log => {
+            const p = document.createElement('p');
+            p.textContent = log;
+            p.role = 'listitem';
+            container.appendChild(p);
+        });
+    }
+
+    // Update server UI
+    function updateServerUI() {
+        for (let serverId in CONFIG.serverStatus) {
+            const btn = document.getElementById(`server${serverId}Btn`);
+            const isActive = CONFIG.serverStatus[serverId];
+
+            if (btn) {
+                btn.textContent = `🔑 Get Key Server ${serverId}${!isActive ? ' (OFFLINE)' : ''}`;
+                btn.disabled = !isActive;
+                btn.style.opacity = isActive ? '1' : '0.6';
+            }
+        }
+    }
+
+    // Handle server link with popup detection
+    function handleServer(link, serverId, event) {
+        event.preventDefault();
+        playSound();
+
+        if (!CONFIG.serverStatus[serverId]) {
+            alert(`⚠️ Server ${serverId} is currently OFFLINE. Please try another server.`);
+            return;
+        }
+
+        const win = window.open(link, '_blank', 'noopener,noreferrer');
+
+        // Popup blocker detection
+        if (!win || win.closed) {
+            CONFIG.serverStatus[serverId] = false;
+            updateServerUI();
+            alert(`⚠️ Server ${serverId} appears to be blocked or unavailable. Marked as OFFLINE.`);
+        }
+    }
+
+    // Hide loader
+    function hideLoader() {
+        const loader = document.getElementById('loader');
+        if (loader) {
+            setTimeout(() => {
+                loader.style.display = 'none';
+            }, CONFIG.loaderDelay);
+        }
+    }
+
+    // Initialize on page load
+    document.addEventListener('DOMContentLoaded', () => {
+        initAudio();
         updateServerUI();
-        alert("⚠️ Server " + serverId + " blocked! Auto OFF.");
-    }
-}
+        hideLoader();
+    });
 
-window.addEventListener("load", ()=>{
-    updateServerUI();
-});
+    // Prevent developer tools / view source
+    document.addEventListener('contextmenu', e => e.preventDefault());
+    document.addEventListener('keydown', function(e) {
+        if ((e.ctrlKey || e.metaKey) && ['u', 'U', 's', 'S', 'c', 'C', 'i', 'I'].includes(e.key)) {
+            e.preventDefault();
+        }
+        if (e.key === 'F12' || (e.ctrlKey && e.shiftKey && e.key === 'I')) {
+            e.preventDefault();
+        }
+    });
+
+    // Prevent copying
+    document.addEventListener('copy', function(e) {
+        e.preventDefault();
+    });
+
+    // Safe external links
+    document.querySelectorAll('a').forEach(link => {
+        link.setAttribute('rel', 'noopener noreferrer');
+    });
 </script>
-    
-<script>
-window.addEventListener("load",()=>{
-setTimeout(()=>{
-document.getElementById("loader").style.display="none";
-},2000);
-});
 
-function playSound(){
-let s=document.getElementById("clickSound");
-s.currentTime=0;
-s.play();
-}
-
-function getKey(){
-playSound();
-window.open("https://t.me/AbhiModsZz","_blank");
-}
-
-function openSocial(link){
-playSound();
-window.open(link,"_blank");
-}
-
-function toggleKeyMenu(){
-    playSound();
-    let menu = document.getElementById("keyMenu");
-
-    if(menu.style.display === "none" || menu.style.display === ""){
-        menu.style.display = "flex";
-        menu.style.flexDirection = "column";
-        menu.style.gap = "10px";
-    } else {
-        menu.style.display = "none";
-    }
-}
-
-document.addEventListener("contextmenu", e => e.preventDefault());
-
-document.addEventListener("keydown", function(e){
-if(
-    (e.ctrlKey && ["u","U","s","S","c","C"].includes(e.key))
-){
-    e.preventDefault();
-    alert("⚠️ Action blocked!");
-}
-});
-
-document.addEventListener("copy", function(e){
-e.preventDefault();
-alert("⚠️ Copying is disabled!");
-});
-</script>
+</body>
+</html>
