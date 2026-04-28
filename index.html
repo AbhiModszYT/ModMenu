@@ -589,39 +589,50 @@
         });
     }
 
-    // Update server UI
+        // Update server UI to reflect current status
     function updateServerUI() {
         for (let serverId in CONFIG.serverStatus) {
             const btn = document.getElementById(`server${serverId}Btn`);
             const isActive = CONFIG.serverStatus[serverId];
 
             if (btn) {
-                btn.textContent = `🔑 Get Key Server ${serverId}${!isActive ? ' (OFFLINE)' : ''}`;
-                btn.disabled = !isActive;
-                btn.style.opacity = isActive ? '1' : '0.6';
+                if (isActive) {
+                    btn.textContent = `🔑 Get Key Server ${serverId}`;
+                    btn.disabled = false;
+                    btn.style.opacity = '1';
+                    btn.style.cursor = 'pointer';
+                } else {
+                    btn.textContent = `🔑 Server ${serverId} (OFFLINE)`;
+                    btn.disabled = true;
+                    btn.style.opacity = '0.5';
+                    btn.style.cursor = 'not-allowed';
+                    btn.style.filter = 'grayscale(1)';
+                }
             }
         }
     }
 
-    // Handle server link with popup detection
+    // Fixed Handle server link
     function handleServer(link, serverId, event) {
         event.preventDefault();
         playSound();
 
+        // 1. Check if manually set to offline in CONFIG
         if (!CONFIG.serverStatus[serverId]) {
-            alert(`⚠️ Server ${serverId} is currently OFFLINE. Please try another server.`);
+            alert(`⚠️ Server ${serverId} is currently maintenance. Please try another server.`);
             return;
         }
 
+        // 2. Attempt to open link
         const win = window.open(link, '_blank', 'noopener,noreferrer');
 
-        // Popup blocker detection
-        if (!win || win.closed) {
-            CONFIG.serverStatus[serverId] = false;
-            updateServerUI();
-            alert(`⚠️ Server ${serverId} appears to be blocked or unavailable. Marked as OFFLINE.`);
+        // 3. Improved Popup Blocker Detection
+        // We don't want to mark the server OFFLINE just because a user has a blocker.
+        if (!win || win.closed || typeof win.closed == 'undefined') {
+            alert(`⚠️ Popup Blocked! Please allow popups for this site to get your key.`);
         }
     }
+
 
     // Hide loader
     function hideLoader() {
